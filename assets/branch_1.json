@@ -1,0 +1,49 @@
+{
+  "data": {
+    "branchId": "1",
+    "products": [
+      {
+        "_id": "62d3987ce00ebee8baea33a7",
+        "productName": "Oneil",
+        "picture": "http://placehold.it/32x32",
+        "sale": 3500.74
+      },
+      {
+        "_id": "62d3987c46cb217667015b94",
+        "productName": "Witt",
+        "picture": "http://placehold.it/32x32",
+        "sale": 554
+      },
+      {
+        "_id": "62d3987cc101dc97cfa19a92",
+        "productName": "Finley",
+        "picture": "http://placehold.it/32x32",
+        "sale": 545
+      },
+      {
+        "_id": "62d3987c62e269eaa56d4349",
+        "productName": "Velez",
+        "picture": "http://placehold.it/32x32",
+        "sale": 454
+      },
+      {
+        "_id": "62d3987c3503cecbfebfe9da",
+        "productName": "Griffith",
+        "picture": "http://placehold.it/32x32",
+        "sale": 845
+      },
+      {
+        "_id": "62d3987c5866b60174fdb8e3",
+        "productName": "Ingram",
+        "picture": "http://placehold.it/32x32",
+        "sale": 474
+      },
+      {
+        "_id": "62d3987c03eecb923ace4e78",
+        "productName": "Dee",
+        "picture": "http://placehold.it/32x32",
+        "sale": 874
+      }
+    ]
+  }
+}
