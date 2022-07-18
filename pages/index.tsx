@@ -1,7 +1,9 @@
 import type { NextPage } from 'next'
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
+import formatNumber from '../helper/formatNumber'
 const allBranchData: IProduct[] = [];
+
 const Home: NextPage = () => {
 
   const [sales, setSales] = useState<IProduct[]>([]);
@@ -14,9 +16,9 @@ const Home: NextPage = () => {
 
   async function fetchSalesData() {
     // Fetching branch data from api
-    const branch_1: IProduct[] = await grtBranchData('1');
-    const branch_2: IProduct[] = await grtBranchData('2');
-    const branch_3: IProduct[] = await grtBranchData('3');
+    const branch_1: IProduct[] = await getBranchData('1');
+    const branch_2: IProduct[] = await getBranchData('2');
+    const branch_3: IProduct[] = await getBranchData('3');
 
     //Merging Branch Data
     for (var i in branch_1) {
@@ -86,13 +88,13 @@ const Home: NextPage = () => {
                   <tr key={key} className={styles.tr}>
                     <td className={styles.td}>{key + 1}</td>
                     <td className={styles.td}>{val.productName}</td>
-                    <td className={styles.td}>{val.sales}</td>
+                    <td className={styles.td}>{formatNumber(val.sales)}</td>
                   </tr>
                 )
               })
             }
           </table>
-          <div className={styles.total}>Total : {total}</div>
+          <div className={styles.total}>Total : {formatNumber(total)}</div>
         </div>
       )
     } else {
@@ -136,12 +138,18 @@ function findTotal(productList: IProduct[]) {
   return saleTotal
 }
 
-async function grtBranchData(id: string) {
-  const response = await fetch(`http://localhost:3000/api/sales/${id}`);
-  var branch_1_data = await response.json();
-  const data: IProduct[] = [];
-  for (var i in branch_1_data.data.products) {
-    data.push({ productID: branch_1_data.data.products[i]['_id'], productName: branch_1_data.data.products[i]['productName'], sales: branch_1_data.data.products[i]['sale'] },);
+export async function getBranchData(id: string) {
+  try {
+    const response = await fetch(`/api/sales/${id}`);
+    var branch_1_data = await response.json();
+    const data: IProduct[] = [];
+    for (var i in branch_1_data.data.products) {
+      data.push({ productID: branch_1_data.data.products[i]['_id'], productName: branch_1_data.data.products[i]['productName'], sales: branch_1_data.data.products[i]['sale'] },);
+    }
+    return data;
+  } catch (e) {
+
+  } finally {
+    return []
   }
-  return data;
 }
