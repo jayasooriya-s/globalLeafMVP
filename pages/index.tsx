@@ -141,6 +141,7 @@ function findTotal(productList: IProduct[]) {
 export async function getBranchData(id: string) {
   try {
     const response = await fetch(`/api/sales/${id}`);
+    console.log
     var branch_1_data = await response.json();
     const data: IProduct[] = [];
     for (var i in branch_1_data.data.products) {
@@ -148,8 +149,6 @@ export async function getBranchData(id: string) {
     }
     return data;
   } catch (e) {
-
-  } finally {
     return []
   }
 }
